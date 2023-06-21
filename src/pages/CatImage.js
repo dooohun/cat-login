@@ -21,7 +21,6 @@ function CatImage() {
     getImage();
   }, [])
 
-
   return (
     <div>
       <Header />
