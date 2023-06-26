@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
 import Header from "../components/Header"
 
@@ -15,6 +15,9 @@ function Register() {
   const [studentIdMessage, setStudentIdMessage] = useState("");
 
   const idPattern = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i;
+
+  const navigate = useNavigate();
+
   const validateEmail = (email) => {
     if (email.match(idPattern) != null) {
       setIdMessage("올바른 형태입니다.");
@@ -76,10 +79,9 @@ function Register() {
   const onPhoneNumberHandler = (event) => {
     const autoHyphen = event.target.value
     .replace(/[^0-9]/g, '')
-    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
     setPhoneNumber(autoHyphen);
   }
-
 
   return (
     <div>
@@ -118,9 +120,15 @@ function Register() {
           value={phoneNumber}
         />
         <div>
-          <button>회원가입</button>
-          <button className="cancel-btn">
-            <Link to="/login" style={{ textDecoration: 'none' }}>취소</Link>
+          <button onClick={() => navigate("/login", {
+            state: {
+              id: id,
+              password: password,
+              registerStatus: true,
+            }
+          })}>회원가입</button>
+          <button className="cancel-btn" onClick={() => navigate("/login")}>
+            취소
           </button>
         </div>
       </div>

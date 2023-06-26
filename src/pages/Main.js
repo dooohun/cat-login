@@ -1,29 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Main.css";
 
-
 function Main() {
+  const navigate = useNavigate();
   return (
     <div className="main-container">
       <h1>Adorable cat</h1>
       <div className="info-container">
-        <Link to="/login">
-          <button className="login-btn">
+        <button onClick={() => navigate("/login")} className="login-btn">
             Login
           </button>
-        </Link>
-          <Link to="/register">
-          <button className="register-btn">
-          Register  
+          <button onClick={() => navigate("/register")} className="register-btn">
+            Register  
           </button>
-          </Link>
       </div>
-      <Link to="/cat_image">
-        <button className="no-login-btn">
+        <button onClick={() => navigate("cat_image")} className="no-login-btn">
           Adorable cats
         </button>
-      </Link>
     </div>
   )
 }
