@@ -12,10 +12,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={process.env.PUBLIC_URL + "/register"} element={<Register />} />
-        <Route path={process.env.PUBLIC_URL + "/login"} element={<Login/>} />
-        <Route path={process.env.PUBLIC_URL + "/cat_image"} element={<CatImage />} />
-        <Route path={process.env.PUBLIC_URL + "/"} element={<Main />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/cat_image" element={<CatImage />} />
+        <Route path="/" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );
