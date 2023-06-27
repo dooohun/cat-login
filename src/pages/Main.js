@@ -8,10 +8,10 @@ function Main() {
     <div className="main-container">
       <h1>Adorable cat</h1>
       <div className="info-container">
-        <button onClick={() => navigate("/login")} className="login-btn">
+        <button onClick={() => navigate("login")} className="login-btn">
             Login
           </button>
-          <button onClick={() => navigate("/register")} className="register-btn">
+          <button onClick={() => navigate("register")} className="register-btn">
             Register  
           </button>
       </div>
