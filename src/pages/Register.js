@@ -55,18 +55,25 @@ function Register() {
     validateEmail(event.target.value);
   }
 
+
+  function checkPasswordMatch(currentPassword) {
+    if (currentPassword !== confirmPassword && currentPassword !== password)
+      setPasswordMessage("비밀번호가 일치하지 않습니다.");
+    else
+      setPasswordMessage("비밀번호가 일치합니다!");
+  }
+
   const onPasswordHandler = (event) => {
-    setPassword(event.target.value);
+    const currentPassword = event.target.value;
+    setPassword(currentPassword);
+    checkPasswordMatch(currentPassword);
+  
   }
   
   const onConfirmPasswordHandler = (event) => {
     const currentPasswordConfirm = event.target.value;
     setConfirmPassword(currentPasswordConfirm);
-    if (currentPasswordConfirm !== password) {
-      setPasswordMessage("비밀번호가 일치하지 않습니다.");
-    } else {
-      setPasswordMessage("비밀번호가 일치합니다!");
-    }
+    checkPasswordMatch(currentPasswordConfirm);
   }
 
   const onStudentHandler = (event) => {
